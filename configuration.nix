@@ -1,0 +1,202 @@
+# CUSTOM CONFIGURATION Knuspii
+# Help is available in the configuration.nix man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, pkgs, ... }:
+
+{
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  # Bootloader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.timeout = 5;
+
+  # Networking
+  networking.hostName = "nixos";
+  networking.networkmanager.enable = true;
+
+  # Firewall + SSH + Printing
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 ];
+  };
+  services.openssh.enable = true;
+  services.printing.enable = false;
+
+  # Timezone / Locale
+  time.timeZone = "Europe/Berlin";
+  i18n.defaultLocale = "de_DE.UTF-8";
+  console.keyMap = "de";
+
+  # Optimize
+  services.fstrim.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
+  #services.irqbalance.enable = false;
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "Sun 10:00" ];
+    };
+    gc = {
+      automatic = true;
+      dates = "Sun 10:00";
+      options = "--delete-older-than 30d";
+    };
+  };
+  services.journald.extraConfig = ''
+    SystemMaxUse=500M
+    SystemMaxFileSize=50M
+    MaxRetentionSec=7day
+  '';
+  fileSystems."/" = {
+    options = [ "noatime" ];
+  };
+
+  # Swap
+  swapDevices = [
+    { device = "/swapfile"; size = 4092; } # 4GB
+  ];
+
+  # Niri
+  services.xserver.enable = true;
+  services.displayManager.ly.enable = true;
+  programs.niri.enable = true;
+
+  # Graphics
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false; 
+    nvidiaSettings = true;
+  };
+
+  # Audio
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  # Fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
+    font-awesome
+  ];
+
+  # AT
+  services.atd.enable = true;
+
+  # Global packages
+  environment.systemPackages = with pkgs; [
+    # Tools
+    nano
+    git
+    curl
+    wget
+    unzip
+    unrar
+    dust
+    htop
+    bottom
+    tree
+    nmap
+    iperf3
+    dig
+    bat
+    gdu
+    traceroute
+    gping
+    shellcheck
+    fastfetch
+    file
+    wireguard-tools
+    steam-run
+    libnotify
+    vhs
+    ffmpeg
+    trash-cli
+  ];
+
+  # User packages
+  users.users.user = {
+    isNormalUser = true;
+    description = "User";
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" "dialout" ];
+    packages = with pkgs; [
+      # Desktop
+      xwayland-satellite
+      waybar
+      fuzzel
+      mako
+      grim
+      slurp
+      kitty
+      awww
+      thunar
+
+      # Dev
+      python3
+      go
+      jq
+      gcc
+      jdk21
+
+      # GUI
+      firefox
+      vlc
+      gimp
+      keepassxc
+      libreoffice
+      discord
+      spotify
+      vscode
+      prismlauncher
+      mangohud
+      itch
+      conky
+      easyeffects
+      zed-editor
+    ];
+  };
+
+  # Gaming
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+  programs.gamemode = {
+      enable = true;
+      enableRenice = true;
+      settings = {
+        general = { 
+          softrealtime = "auto";
+          renice = 10;
+        };
+        custom = {
+          start = "${pkgs.libnotify}/bin/notify-send -a 'Gamemode' 'GameMode started'";
+          end = "${pkgs.libnotify}/bin/notify-send -a 'Gamemode' 'GameMode ended'";
+        };
+      };
+    };
+
+  # Unfree Packages
+  nixpkgs.config.allowUnfree = true;
+
+  # Version
+  system.stateVersion = "25.11";
+}
