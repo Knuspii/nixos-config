@@ -36,10 +36,10 @@ fi
 
 # --- Directories in config ---
 CONFIG_DIRS=(
-    "niri"
-    "waybar"
+    "dconf"
+    "autostart"
+    "nautilus"
     "wallpaper"
-    "kitty"
     "easyeffects"
 )
 

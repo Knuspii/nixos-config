@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=kgx
+Hidden=false
+NoDisplay=false
+Name=Console
+Comment=Start Terminal at login
+X-GNOME-Autostart-Phase=Application
+X-GNOME-Autostart-enabled=true
