@@ -30,6 +30,10 @@
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "de_DE.UTF-8";
   console.keyMap = "de";
+  services.xserver.xkb = {
+    layout = "de";
+    variant = "";
+  };
 
   # Optimize
   services.fstrim.enable = true;
@@ -140,7 +144,7 @@
       # Desktop
       gnome-tweaks
       gnomeExtensions.open-bar
-      kitty
+      gnomeExtensions.vitals
 
       # Dev
       python3
