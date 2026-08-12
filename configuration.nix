@@ -67,6 +67,7 @@
   services.xserver.enable = true;
   services.displayManager.ly.enable = true;
   programs.niri.enable = true;
+  security.pam.services.gtklock = {};
 
   # Graphics
   hardware.graphics = {
@@ -128,7 +129,7 @@
     libnotify
     vhs
     ffmpeg
-    trash-cli
+    trashy
   ];
 
   # User packages
@@ -147,6 +148,7 @@
       kitty
       awww
       thunar
+      gtklock
 
       # Dev
       python3
@@ -166,8 +168,6 @@
       vscode
       prismlauncher
       mangohud
-      itch
-      conky
       easyeffects
       zed-editor
     ];
