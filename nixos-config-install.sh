@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-#
-# Script to install NixOS + KDE + my configs
+# Script to install NixOS with my configs
 # I made this mainly for me but feel free to use
 # Made by Knuspii
-#
 
 if [ "$EUID" -ne 0 ]; then
   echo "Please run as root."
