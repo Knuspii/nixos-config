@@ -63,11 +63,10 @@
     { device = "/swapfile"; size = 4092; } # 4GB
   ];
 
-  # Niri
+  # Gnome
   services.xserver.enable = true;
-  services.displayManager.ly.enable = true;
-  programs.niri.enable = true;
-  security.pam.services.gtklock = {};
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Graphics
   hardware.graphics = {
@@ -136,19 +135,12 @@
   users.users.user = {
     isNormalUser = true;
     description = "User";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "video"];
     packages = with pkgs; [
       # Desktop
-      xwayland-satellite
-      waybar
-      fuzzel
-      mako
-      grim
-      slurp
+      gnome-tweaks
+      gnomeExtensions.open-bar
       kitty
-      awww
-      thunar
-      gtklock
 
       # Dev
       python3
