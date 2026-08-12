@@ -65,7 +65,7 @@ if [ -f "$HOME/.starofitrc" ]; then
     echo "Hostname: $HOSTNAME"
     echo "IP: $(ip route get 1.1.1.1 | awk '{print $7; exit}')"
 else
-    fastfetch
+    fastfetch -c examples/13
     date "+%a, %d.%m.%Y - %H:%M:%S"
     echo Bro denkt, er wäre im Hacker-Modus
 fi
