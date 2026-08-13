@@ -5,12 +5,11 @@
 - **DE:** GNOME
 - **WM:** Mutter
 - **Shell:** Bash
-* **Desktop Environment:** Pre-configured GNOME (via GDM display manager) with Wayland support.
-* **Extensions:** Pre-configured with `Vitals` (system monitoring) and `Open Bar`.
-* **Garbage Collection:** Automatic weekly cleanup of generations older than 30 days (`Sun 10:00`).
-* **Nix Store Optimization:** Automatic deduplication and store optimization enabled.
-* **Storage Improvements:** `noatime` mount option for SSD longevity and 4GB swap space.
-* **Journald Controls:** System log capped at 500MB and retained for maximum 7 days.
+- **Desktop Environment:** Pre-configured GNOME (via GDM display manager) with Wayland support.
+- **Extensions:** Pre-configured with `Vitals`,`Open Bar`,`Logo Menu`,`Burn My Windows`.
+- **Garbage Collection:** Automatic weekly cleanup of generations older than 30 days (`Sun 10:00`).
+- **Nix Store Optimization:** Automatic deduplication and store optimization enabled.
+- **Journald Controls:** System log capped at 500MB and retained for maximum 7 days.
 
 ## Why NixOS + GNOME?
 Why run this setup? It boils down to two main things: reliability and clean design.
