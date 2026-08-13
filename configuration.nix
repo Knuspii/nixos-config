@@ -145,6 +145,8 @@
       gnome-tweaks
       gnomeExtensions.open-bar
       gnomeExtensions.vitals
+      gnomeExtensions.logo-menu
+      gnomeExtensions.burn-my-windows
 
       # Dev
       python3

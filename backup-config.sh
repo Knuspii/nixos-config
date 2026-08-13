@@ -19,26 +19,24 @@ mkdir -p "$BACKUP_DIR/config"
 echo "Creating backup in: $BACKUP_DIR"
 
 # --- Bash files (rename without dot) ---
-if [ -f "$HOME/.bashrc" ]; then
-    cp "$HOME/.bashrc" "$BACKUP_DIR/bashrc"
-    echo "Backing up .bashrc → bashrc"
-fi
+cp "$HOME/.bashrc" "$BACKUP_DIR/bashrc"
+echo "Backing up .bashrc → bashrc"
 
-if [ -f "$HOME/.bash_profile" ]; then
-    cp "$HOME/.bash_profile" "$BACKUP_DIR/bash_profile"
-    echo "Backing up .bash_profile → bash_profile"
-fi
+cp "$HOME/.bash_profile" "$BACKUP_DIR/bash_profile"
+echo "Backing up .bash_profile → bash_profile"
 
-if [ -f "$HOME/backup-config.sh" ]; then
-    cp "$HOME/backup-config.sh" "$BACKUP_DIR/backup-config.sh"
-    echo "Backing up backup-config.sh → backup-config.sh"
-fi
+cp "$HOME/backup-config.sh" "$BACKUP_DIR/backup-config.sh"
+echo "Backing up backup-config.sh → backup-config.sh"
+
+cp "/etc/nixos/configuration.nix" "$BACKUP_DIR/configuration.nix"
+echo "Backing up /etc/nixos/configuration.nix → configuration.nix"
 
 # --- Directories in config ---
 CONFIG_DIRS=(
     "dconf"
     "autostart"
     "nautilus"
+    "fastfetch"
     "wallpaper"
     "easyeffects"
 )
