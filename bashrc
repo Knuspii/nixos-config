@@ -59,14 +59,7 @@ alias config='sudo nano /etc/nixos/configuration.nix'
 alias pkgsearch='nix-env -qaP'
 
 # Autostart
-if [ -f "$HOME/.starofitrc" ]; then
-    source "$HOME/.starofitrc"
-    date "+%A, %d.%m.%Y - %H:%M:%S"
-    echo "Hostname: $HOSTNAME"
-    echo "IP: $(ip route get 1.1.1.1 | awk '{print $7; exit}')"
-else
-    fastfetch -c examples/13
-    date "+%a, %d.%m.%Y - %H:%M:%S"
-    echo Bro denkt, er wäre im Hacker-Modus
-fi
+fastfetch
+date "+%a, %d.%m.%Y - %H:%M:%S"
+echo Bro denkt, er wäre im Hacker-Modus
 PS1='\[\e[1;32m\][\u@\h:\w]\$\[\e[0m\] '
