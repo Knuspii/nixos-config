@@ -190,6 +190,36 @@
       };
     };
 
+  # Remove default GNOME apps
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-connections
+    gnome-text-editor
+    gnome-tour
+    epiphany
+    geary
+    seahorse
+    yelp
+    simple-scan
+    gnome-calculator
+    gnome-calendar
+    gnome-characters
+    gnome-clocks
+    gnome-contacts
+    gnome-maps
+    gnome-music
+    gnome-weather
+    # cheese
+    # loupe
+    # evince
+    # file-roller
+    # totem
+    # gnome-photos
+    # gnome-disk-utility
+    # gnome-font-viewer
+    # gnome-logs
+    # gnome-system-monitor
+  ];
+
   # Unfree Packages
   nixpkgs.config.allowUnfree = true;
 
