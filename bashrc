@@ -62,4 +62,5 @@ alias pkgsearch='nix-env -qaP'
 fastfetch
 date "+%a, %d.%m.%Y - %H:%M:%S"
 echo Bro denkt, er wäre im Hacker-Modus
-PS1='\[\e[1;32m\][\u@\h:\w]\$\[\e[0m\] '
+PS1='\[\e[1;36m\]\u@\h\[\e[0m\]:\[\e[1;35m\]\w\[\e[0m\] \[\e[1;32m\]>>\[\e[0m\] '
+
