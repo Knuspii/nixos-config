@@ -25,7 +25,9 @@ if ! shopt -oq posix; then
 fi
 
 # gopath
-export PATH="$PATH:$(go env GOPATH)/bin"
+if command -v go >/dev/null 2>&1; then
+    export PATH="$PATH:$(go env GOPATH)/bin"
+fi
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -50,7 +52,7 @@ alias h='history'
 alias dirsize='sudo du -sh -- * .[!.]* 2>/dev/null | sort -h'
 alias errs='sudo journalctl -p 3 -xb -f'
 alias please='sudo $(history -p !!)'
-alias myip='curl ifconfig.me && echo'
+alias myip='curl -s https://ifconfig.me && echo'
 # NixOS
 alias update='sudo nixos-rebuild switch'
 alias upgrade='sudo nix-channel --update && sudo nixos-rebuild switch'
@@ -62,5 +64,4 @@ alias pkgsearch='nix-env -qaP'
 fastfetch
 date "+%a, %d.%m.%Y - %H:%M:%S"
 echo Bro denkt, er wäre im Hacker-Modus
-PS1='\[\e[1;36m\]\u@\h\[\e[0m\]:\[\e[1;35m\]\w\[\e[0m\] \[\e[1;32m\]>>\[\e[0m\] '
-
+PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\] \[\e[1;33m\]>>\[\e[0m\] '
