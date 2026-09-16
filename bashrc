@@ -61,7 +61,9 @@ alias config='sudo nano /etc/nixos/configuration.nix'
 alias pkgsearch='nix-env -qaP'
 
 # Autostart
-fastfetch
-date "+%a, %d.%m.%Y - %H:%M:%S"
-echo Bro denkt, er wäre im Hacker-Modus
+if command -v fastfetch >/dev/null 2>&1; then
+    fastfetch
+    date "+%a, %d.%m.%Y - %H:%M:%S"
+    echo Bro denkt, er wäre im Hacker-Modus
+fi
 PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\] \[\e[1;33m\]>>\[\e[0m\] '
