@@ -16,6 +16,8 @@ mkdir -p "$BACKUP_DIR/config"
 
 echo "Creating backup in: $BACKUP_DIR"
 
+cp /etc/nixos/configuration.nix nixos-backup/
+
 # --- Bash files (rename without dot) ---
 if [ -f "$HOME/.bashrc" ]; then
     cp "$HOME/.bashrc" "$BACKUP_DIR/bashrc"

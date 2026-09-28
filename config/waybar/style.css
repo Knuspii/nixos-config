@@ -1,4 +1,4 @@
-@define-color bg0    #282828; /* Dunkelgrau Hintergrund */
+@define-color bg0    #121416; /* Dunkelgrau Hintergrund */
 @define-color bg1    #3c3836; /* Modul-Hintergrund */
 @define-color fg0    #fbf1c7; /* Weiß / Hellbeige */
 @define-color yellow #d79921; /* Gruvbox Gelb */
@@ -38,6 +38,7 @@ window#waybar {
 #custom-nixos,
 #window,
 #custom-fuzzel,
+#custom-separator,
 #clock {
     color: @yellow;
 }

@@ -101,9 +101,6 @@
     font-awesome
   ];
 
-  # AT
-  services.atd.enable = true;
-
   # Global packages
   environment.systemPackages = with pkgs; [
     # Tools
@@ -145,15 +142,17 @@
       # Desktop
       xwayland-satellite
       waybar
+      swaylock
+      kdePackages.dolphin
+      kdePackages.gwenview
       fuzzel
-      cava
+      ghostty
+      nordic
       mako
       grim
       slurp
-      ghostty
       awww
-      swaylock
-      thunar
+      cava
 
       # Dev
       python3
@@ -166,10 +165,8 @@
       firefox
       vlc
       gimp
-      keepassxc
       libreoffice
       discord
-      spotify
       vscode
       prismlauncher
       mangohud
@@ -198,6 +195,9 @@
         };
       };
     };
+
+  # AT
+  services.atd.enable = true;
 
   # Unfree Packages
   nixpkgs.config.allowUnfree = true;

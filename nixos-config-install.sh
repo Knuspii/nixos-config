@@ -23,6 +23,7 @@ sudo -u $USERNAME cp "$TMP_DIR/bashrc" "/home/$USERNAME/.bashrc"
 sudo -u $USERNAME cp "$TMP_DIR/bash_profile" "/home/$USERNAME/.bash_profile"
 sudo -u $USERNAME cp "$TMP_DIR/backup-config.sh" "/home/$USERNAME/backup-config.sh"
 sudo -u $USERNAME cp -r "$TMP_DIR/config/." "/home/$USERNAME/.config/"
+chmod +x "/home/$USERNAME/.config/waybar/cava.sh"
 # NIXOS
 sudo cp "$TMP_DIR/configuration.nix" "/etc/nixos/configuration.nix"
 # Delete temp files

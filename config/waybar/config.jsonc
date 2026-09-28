@@ -34,7 +34,7 @@
 
   // App Launcher
   "custom/fuzzel": {
-    "format": "[ 󰍉 Apps ]",
+    "format": "《 󰍉 Apps 》",
     "on-click": "fuzzel",
     "tooltip": false,
   },
@@ -43,8 +43,8 @@
   "niri/workspaces": {
     "format": "[ {icon} ]",
     "format-icons": {
-      "active": "",
-      "default": "",
+      "active": "◉",
+      "default": "○",
     },
   },
 
@@ -63,14 +63,9 @@
 
   // Network
   "network": {
-    "format-wifi": "󰖩 {signalStrength}% 󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
-    "format-ethernet": "󰈀 󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
+    "format-wifi": "󰖩 WLAN",
+    "format-ethernet": "󰈀 LAN",
     "format-disconnected": "󰖪 OFF",
-
-    "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}%\n↓ {bandwidthDownBytes}\n↑ {bandwidthUpBytes}",
-    "tooltip-format-ethernet": "{ifname}\n↓ {bandwidthDownBytes}\n↑ {bandwidthUpBytes}",
-    "tooltip-format-disconnected": "Not connected",
-
     "on-click": "ghostty -e nmtui",
     "interval": 5
   },
@@ -99,7 +94,7 @@
 
   // Clock
   "clock": {
-    "format": "[ 󰥔 {:%H:%M:%S} ]",
+    "format": "《 󰥔 {:%H:%M:%S} 》",
     "interval": 1,
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   },
