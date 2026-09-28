@@ -23,7 +23,7 @@
     enable = true;
     allowedTCPPorts = [ 22 ];
   };
-  services.openssh.enable = true;
+  services.openssh.enable = false;
   services.printing.enable = false;
 
   # Timezone / Locale
@@ -67,10 +67,10 @@
     { device = "/swapfile"; size = 4092; } # 4GB
   ];
 
-  # Gnome
+  # Niri
   services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  services.displayManager.ly.enable = true;
+  programs.niri.enable = true;
 
   # Graphics
   hardware.graphics = {
@@ -131,6 +131,7 @@
     steam-run
     libnotify
     vhs
+    networkmanager
     ffmpeg
     trashy
   ];
@@ -142,11 +143,17 @@
     extraGroups = [ "networkmanager" "wheel" "audio" "video"];
     packages = with pkgs; [
       # Desktop
-      gnome-tweaks
-      gnomeExtensions.open-bar
-      gnomeExtensions.vitals
-      gnomeExtensions.logo-menu
-      gnomeExtensions.burn-my-windows
+      xwayland-satellite
+      waybar
+      fuzzel
+      cava
+      mako
+      grim
+      slurp
+      ghostty
+      awww
+      swaylock
+      thunar
 
       # Dev
       python3
@@ -191,36 +198,6 @@
         };
       };
     };
-
-  # Remove default GNOME apps
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-connections
-    gnome-text-editor
-    gnome-tour
-    epiphany
-    geary
-    seahorse
-    yelp
-    simple-scan
-    gnome-calculator
-    gnome-calendar
-    gnome-characters
-    gnome-clocks
-    gnome-contacts
-    gnome-maps
-    gnome-music
-    gnome-weather
-    # cheese
-    # loupe
-    # evince
-    # file-roller
-    # totem
-    # gnome-photos
-    # gnome-disk-utility
-    # gnome-font-viewer
-    # gnome-logs
-    # gnome-system-monitor
-  ];
 
   # Unfree Packages
   nixpkgs.config.allowUnfree = true;
