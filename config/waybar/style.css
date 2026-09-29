@@ -31,7 +31,7 @@ window#waybar {
 #custom-notification {
     color: @fg0;
     border-radius: 0px;
-    padding: 15px;
+    padding: 10px;
 }
 
 /* NixOS Logo, Fuzzel & Clock in Gelb */
@@ -39,6 +39,7 @@ window#waybar {
 #window,
 #custom-fuzzel,
 #custom-separator,
+#custom-date,
 #clock {
     color: @yellow;
 }
