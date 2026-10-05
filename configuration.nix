@@ -67,11 +67,6 @@
     { device = "/swapfile"; size = 4092; } # 4GB
   ];
 
-  # Niri
-  services.xserver.enable = true;
-  services.displayManager.ly.enable = true;
-  programs.niri.enable = true;
-
   # Graphics
   hardware.graphics = {
     enable = true;
@@ -92,6 +87,10 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  # Cosmic
+  services.displayManager.cosmic-greeter.enable = true;
+  services.desktopManager.cosmic.enable = true;
 
   # Fonts
   fonts.packages = with pkgs; [
@@ -138,21 +137,6 @@
     description = "User";
     extraGroups = [ "networkmanager" "wheel" "audio" "video"];
     packages = with pkgs; [
-      # Desktop
-      xwayland-satellite
-      waybar
-      swaylock
-      kdePackages.dolphin
-      kdePackages.gwenview
-      fuzzel
-      ghostty
-      nordic
-      mako
-      grim
-      slurp
-      awww
-      cava
-
       # Dev
       python3
       go
@@ -174,12 +158,13 @@
     ];
   };
 
-  # Gaming
+  # Steam
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
+  # Gamemode
   programs.gamemode = {
       enable = true;
       enableRenice = true;

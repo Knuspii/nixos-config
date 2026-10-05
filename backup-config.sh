@@ -34,15 +34,19 @@ if [ -f "$HOME/backup-config.sh" ]; then
     echo "Backing up backup-config.sh → backup-config.sh"
 fi
 
+if [ -f "$HOME/.config/cosmic-initial-setup-done" ]; then
+    cp "$HOME/.config/cosmic-initial-setup-done" "$BACKUP_DIR/config/cosmic-initial-setup-done"
+    echo "Backing up cosmic-initial-setup-done → cosmic-initial-setup-done"
+fi
+
 # --- Directories in config ---
 CONFIG_DIRS=(
-    "niri"
-    "waybar"
-    "swaylock"
-    "ghostty"
+    "cosmic"
     "wallpaper"
     "fastfetch"
     "easyeffects"
+    "qt5ct"
+    "qt6ct"
 )
 
 for d in "${CONFIG_DIRS[@]}"; do
